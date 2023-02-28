@@ -7,20 +7,12 @@ def Index(request):
     context = {}
     return render(request, 'recettes/index.html', context)
 
-class MesRecettes(generic.ListView):
-    model = Recette
-    paginate_by = 25
-    template_name = 'recettes/mes_recettes.html'
+class Categories(generic.ListView):
+    model = Categorie
+    template_name = 'recettes/categories.html'
 
-#     def get_queryset(self):
-#         return Recette.objects.order_by('titre')
+class RecettesByCategorie(generic.ListView):
+    template_name = 'recettes/recettes_by_categorie.html'
 
-
-# class DetailView(generic.DetailView):
-#     model = Recette
-#     template_name = 'recettes/fiche.html'
-
-
-# class ListView(generic.ListView):
-#     model = Recette
-#     template_name = 'recettes/liste.html'
+    def get_queryset(self):
+        return Recette.objects.filter(categorie__id=self.kwargs['categorie_id'])

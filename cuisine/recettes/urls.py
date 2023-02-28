@@ -4,6 +4,6 @@ from . import views
 app_name = "recettes"
 urlpatterns = [
     path('', views.Index, name='index'),
-    path('mes_recettes/', views.MesRecettes.as_view(), name='mes_recettes'),
-    # path('liste/', views.ResultsView.as_view(), name='liste'),
+    path('mes_recettes/', views.Categories.as_view(), name='categories'),
+    path('mes_recettes/<int:categorie_id>/', views.RecettesByCategorie.as_view(), name='recettes_by_categorie'),
 ]

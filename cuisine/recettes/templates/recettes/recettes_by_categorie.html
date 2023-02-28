@@ -9,8 +9,8 @@
 <body>
     <h1>Mes recettes</h1>
     <ul>
-        {% for recette in recettes %}
-            <li>{{ article.pub_date|date }} - {{ article.headline }}</li>
+        {% for recette in recette_list %}
+            <li><a href="">{{ recette.titre }}</a></li>
         {% empty %}
             <li>Vous n'avez pas de recettes</li>
         {% endfor %}
