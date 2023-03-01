@@ -3,10 +3,6 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Recette, Categorie
 
-def Index(request):
-    context = {}
-    return render(request, 'recettes/index.html', context)
-
 class Categories(generic.ListView):
     model = Categorie
     template_name = 'recettes/categories.html'
