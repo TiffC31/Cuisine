@@ -2,11 +2,5 @@
 {% block title %}Mes recettes{% endblock %}
 {% block content %}
     <h1>Mes recettes</h1>
-    <ul>
-        {% for categorie in categorie_list %}
-            <li><a href="{% url 'recettes:recettes_by_categorie' categorie.id %}">{{ categorie.nom}}</a></li>
-        {% empty %}
-            <li>Vous n'avez pas de recettes</li>
-        {% endfor %}
-    </ul>
+    {% include "recettes/menu_categories.html" %}
 {% endblock %}

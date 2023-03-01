@@ -1,0 +1,13 @@
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'recettes/css/style.css' %}">
+{% endblock %}
+<div class="col-4 col-xl-3">
+    <ul class="nav nav-pills flex-column bg-dark">
+        {% for categorie in categorie_list %}
+            <li class="nav-item">
+                <a class="nav-link {% if categorie_id == categorie.id %}active{% endif %}" href="{% url 'recettes:recettes_by_categorie' categorie.id %}">{{ categorie.nom }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

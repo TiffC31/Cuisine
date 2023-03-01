@@ -1,0 +1,23 @@
+/* 
+   COULEURS
+-- Rouge foncé : #780000
+-- Rouge clair : #C1121F
+-- Beige : #FDF0D5
+-- Bleu foncé : #003049
+-- Bleu clair : #669BBC 
+*/
+
+a {
+    color: #780000;
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #f8f9faa6;
+}
+.nav-pills .nav-link.active {
+    background-color: #780000;
+}
+.nav-link:focus, .nav-link:hover {
+    color: #C1121F;
+}
