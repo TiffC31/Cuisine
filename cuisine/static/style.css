@@ -1,0 +1,12 @@
+/* 
+   COULEURS
+-- Rouge foncé : #780000
+-- Rouge clair : #C1121F
+-- Beige : #FDF0D5
+-- Bleu foncé : #003049
+-- Bleu clair : #669BBC 
+*/
+
+.nav-link:focus, .nav-link:hover {
+   color: #C1121F;
+}
