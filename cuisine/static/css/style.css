@@ -7,11 +7,22 @@
 -- Bleu clair : #669BBC 
 */
 
+@font-face {
+   font-family: 'ShantellSans';
+   src: url('../fonts/ShantellSans-Regular.ttf');
+}
+@font-face {
+   font-family: 'ShantellSans';
+   font-weight: bold;
+   src: url('../fonts/ShantellSans-Bold.ttf');
+}
+
 a, .nav-link:focus, .nav-link:hover {
    color: #C1121F;
 }
 
-.btn-primary {
+.btn-primary, .btn-outline-primary {
+   --bs-btn-color: #ffffff;
    --bs-btn-bg: #003049;
    --bs-btn-border-color: #003049;
    --bs-btn-border-color: #003049;
@@ -47,4 +58,12 @@ a, .nav-link:focus, .nav-link:hover {
 .error-form-control:focus {
    box-shadow: 0 0 0 0.25rem rgb(193 18 31 / 25%);
    border-color: #C1121F;
+}
+
+h1 {
+   font-family: 'ShantellSans', var(--bs-body-font-family);
+   font-weight: bold;
+   text-align: center;
+   margin-bottom: 30px;
+   color: #780000;
 }
