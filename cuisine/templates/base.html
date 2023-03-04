@@ -22,7 +22,7 @@
                 <div class="collapse navbar-collapse" id="navbar_items">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'home:index' %}">Home</a>
+                            <a class="nav-link" href="{% url 'home:index' %}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'recettes:categories' %}">Mes recettes</a>
@@ -48,7 +48,7 @@
                                 <a class="nav-link dropdown-toggle" href="{% url 'home:index' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-circle"></i>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="{% url 'user:compte' %}">Compte</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">Déconnexion</a></li>
@@ -60,10 +60,6 @@
                             </li>
                         {% endif %}
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Recherche">
-                        <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
                 </div>
             </div>
         </nav>
