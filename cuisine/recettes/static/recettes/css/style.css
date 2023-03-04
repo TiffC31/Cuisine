@@ -12,12 +12,6 @@ a {
     text-decoration: none;
 }
 
-.nav-link {
-    color: #f8f9faa6;
-}
 .nav-pills .nav-link.active {
     background-color: #780000;
-}
-.nav-link:focus, .nav-link:hover {
-    color: #C1121F;
 }
