@@ -2,15 +2,17 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.views import generic
 from .models import Recette, Categorie
+from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class Categories(generic.ListView):
+class Categories(LoginRequiredMixin, generic.ListView):
     model = Categorie
     template_name = 'recettes/categories.html'
 
     def get_queryset(self):
         return Categorie.objects.order_by('tri')
 
-class RecettesByCategorie(generic.ListView):
+class RecettesByCategorie(LoginRequiredMixin, generic.ListView):
     template_name = 'recettes/recettes_by_categorie.html'
 
     def get_queryset(self):
