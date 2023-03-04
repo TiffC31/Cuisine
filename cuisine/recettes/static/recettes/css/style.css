@@ -7,11 +7,6 @@
 -- Bleu clair : #669BBC 
 */
 
-a {
-    color: #780000;
-    text-decoration: none;
-}
-
 .nav-pills .nav-link.active {
     background-color: #780000;
 }

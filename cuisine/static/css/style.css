@@ -18,7 +18,7 @@
 }
 
 /* ----- GLOBAL ----- */
-a { color: #C1121F; }
+a { color: #C1121F; text-decoration: none; }
 h1 {
    font-family: 'ShantellSans', var(--bs-body-font-family);
    font-weight: bold;
