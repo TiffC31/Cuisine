@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Mon compte{% endblock %}
+{% block content %}
+    <h1>Mon compte</h1>
+    <div class="row">
+        <div class="col">
+            <p>Pseudo: {{ user.username }}</p>
+            <a href="{% url 'password_change' %}">Modifier mon mot de passe</a>
+        </div>
+    </div>
+{% endblock %}

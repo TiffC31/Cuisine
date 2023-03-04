@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
+    'user.apps.UserConfig',
     'recettes.apps.RecettesConfig',
     'debug_toolbar',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# Auth
+AUTH_USER_MODEL = 'user.User'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home:index'
+LOGOUT_REDIRECT_URL = 'home:index'
+PASSWORD_CHANGE_REDIRECT = 'user:compte'
+
+DEFAULT_FROM_EMAIL='contact@tiffanycouce.fr'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
