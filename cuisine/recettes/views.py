@@ -7,6 +7,9 @@ class Index(LoginRequiredMixin, generic.ListView):
     model = Categorie
     template_name = 'recettes/liste.html'
 
+    def get_queryset(self):
+        return Categorie.objects.order_by('tri')
+
 class Liste(LoginRequiredMixin, generic.ListView):
     template_name = 'recettes/liste.html'
     paginate_by = 12
