@@ -3,6 +3,6 @@ from . import views
 
 app_name = "recettes"
 urlpatterns = [
-    path('mes_recettes/', views.Categories.as_view(), name='categories'),
-    path('mes_recettes/<int:categorie_id>/', views.RecettesByCategorie.as_view(), name='recettes_by_categorie'),
+    path('', views.Index.as_view(), name='index'),
+    path('<int:categorie_id>/', views.Liste.as_view(), name='recettes_by_categorie'),
 ]

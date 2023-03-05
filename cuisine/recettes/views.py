@@ -1,25 +1,21 @@
 from multiprocessing import context
-from django.shortcuts import render
 from django.views import generic
 from .models import Recette, Categorie
-from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class Categories(LoginRequiredMixin, generic.ListView):
+class Index(LoginRequiredMixin, generic.ListView):
     model = Categorie
-    template_name = 'recettes/categories.html'
+    template_name = 'recettes/liste.html'
 
-    def get_queryset(self):
-        return Categorie.objects.order_by('tri')
-
-class RecettesByCategorie(LoginRequiredMixin, generic.ListView):
-    template_name = 'recettes/recettes_by_categorie.html'
+class Liste(LoginRequiredMixin, generic.ListView):
+    template_name = 'recettes/liste.html'
+    paginate_by = 12
 
     def get_queryset(self):
         return Recette.objects.filter(categorie__id=self.kwargs['categorie_id'])
 
     def get_context_data(self,**kwargs):
-        context = super(RecettesByCategorie,self).get_context_data(**kwargs)
+        context = super(Liste,self).get_context_data(**kwargs)
         context['categorie_list'] = Categorie.objects.order_by('tri')
         context['categorie_id'] = self.kwargs['categorie_id']
         return context

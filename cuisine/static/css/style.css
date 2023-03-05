@@ -70,3 +70,12 @@ h1 {
    box-shadow: 0 0 0 0.25rem rgb(193 18 31 / 25%);
    border-color: #C1121F;
 }
+
+/* ----- PAGINATION ----- */
+.pagination {
+   --bs-pagination-color: #003049;
+   --bs-pagination-hover-color: #C1121F;
+   --bs-pagination-focus-color: #C1121F;
+   --bs-pagination-active-bg: #780000;
+   --bs-pagination-active-border-color: #780000;
+}

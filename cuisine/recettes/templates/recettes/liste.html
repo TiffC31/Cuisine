@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'recettes/css/style.css' %}">
+{% endblock %}
+{% block title %}Mes recettes{% endblock %}
+{% block content %}
+    <h1>Mes recettes</h1>
+    <div class="row">
+        <div class="col">
+            <ul class="nav bg-dark menu-recette justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ajouter une recette</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 col-xl-3">
+            <ul class="nav nav-pills flex-column bg-dark">
+                {% for categorie in categorie_list %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if categorie_id == categorie.id %}active{% endif %}" href="{% url 'recettes:recettes_by_categorie' categorie.id %}">{{ categorie.nom }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-8 col-xl-9">
+            <div class="row row-cols-2 row-cols-lg-4 row-cols-xxl-6 mt-2">
+                {% for recette in recette_list %}
+                    <div class="col">
+                        <div class="card mb-4">
+                            <img src="{% if recette.photo %}{{ recette.photo }}{% else %}{% static 'recettes/img/no-photo.jpg' %}{% endif %}" class="card-img-top" alt="{{ recette.titre }}">
+                            <div class="card-body">
+                                <p class="card-title f-shantell">{{ recette.titre }}</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="">Voir la recette</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-4 offset-xl-3 col-8 col-xl-9">
+            {% if recette_list %}
+                <nav aria-label="Pagination recettes">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page=1"><i class="bi bi-chevron-double-left"></i></a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-chevron-left"></i></a></li>
+                        {% endif %}
+                        {% for page in page_obj.paginator.page_range %}
+                            <li class="page-item {% if page == page_obj.number %}active{% endif %}" {% if page == page_obj.number %}aria-current="page"{% endif %}>
+                                <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}"><i class="bi bi-chevron-right"></i></a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"><i class="bi bi-chevron-double-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
