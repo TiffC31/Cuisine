@@ -10,7 +10,7 @@
         <div class="col">
             <ul class="nav bg-dark menu-recette justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ajouter une recette</a>
+                    <a class="nav-link" href="{% url 'recettes:nouvelle' %}">Ajouter une recette</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,7 @@
                 {% for recette in recette_list %}
                     <div class="col">
                         <div class="card mb-4">
-                            <img src="{% if recette.photo %}{{ recette.photo }}{% else %}{% static 'recettes/img/no-photo.jpg' %}{% endif %}" class="card-img-top" alt="{{ recette.titre }}">
+                            <img src="{% if recette.photo %}{{ recette.photo.url }}{% endif %}" class="card-img-top" alt="{{ recette.titre }}">
                             <div class="card-body">
                                 <p class="card-title f-shantell">{{ recette.titre }}</p>
                             </div>
