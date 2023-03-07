@@ -27,13 +27,15 @@ class Liste(LoginRequiredMixin, ListView):
     
 class RecetteCreateView(View):
     form_class = forms.CreateForm
+    template = 'recettes/recette_create_form.html'
 
     def get(self, request):
-        return render(request, 'recettes/recette_create_form.html', context={'form':self.form_class()})
+        return render(request, self.template, context={'form':self.form_class()})
     
     def post(self, request):
         form = self.form_class(request.POST, request.FILES)
         if (form.is_valid()):
             recette = form.save()
             return redirect('recettes:index')
-        return render(request, 'user/signup.html', context={'form':form})
+        else:
+            return render(request, self.template, context={'form':form})
