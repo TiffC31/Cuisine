@@ -17,12 +17,12 @@ class Liste(LoginRequiredMixin, ListView):
     paginate_by = 12
 
     def get_queryset(self):
-        return Recette.objects.filter(categorie__id=self.kwargs['categorie_id'])
+        return Recette.objects.filter(categorie__slug=self.kwargs['slug'])
 
     def get_context_data(self,**kwargs):
         context = super(Liste,self).get_context_data(**kwargs)
         context['categorie_list'] = Categorie.objects.order_by('tri')
-        context['categorie_id'] = self.kwargs['categorie_id']
+        context['slug'] = self.kwargs['slug']
         return context
     
 class RecetteCreateView(View):
