@@ -20,7 +20,7 @@
             <ul class="nav nav-pills flex-column bg-dark">
                 {% for categorie in categorie_list %}
                     <li class="nav-item">
-                        <a class="nav-link {% if categorie_id == categorie.id %}active{% endif %}" href="{% url 'recettes:recettes_by_categorie' categorie.id %}">{{ categorie.nom }}</a>
+                        <a class="nav-link {% if slug == categorie.slug %}active{% endif %}" href="{% url 'recettes:recettes_by_categorie' categorie.slug %}">{{ categorie.nom }}</a>
                     </li>
                 {% endfor %}
             </ul>
