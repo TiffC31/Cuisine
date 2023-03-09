@@ -3,40 +3,163 @@
 {% block content %}
     <h1>Nouvelle recette</h1>
     <div class="row">
-        <div class="offset-3 col-6">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% load widget_tweaks %}
-                <div class="mb-3">
-                    {{ form.categorie.label_tag }}
-                    {{ form.categorie|add_class:"form-select mt-1"|add_error_class:"error-form-control" }}
-                    {% if form.errors.categorie %}
-                        {% for error in form.errors.categorie %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% load widget_tweaks %}
+            <div class="row justify-content-center">
+                <div class="col col-xl-6">
+                    <div class="mb-3">
+                        {{ form.titre.label_tag }}
+                        {{ form.titre|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                        {% if form.errors.titre %}
+                            {% for error in form.errors.titre %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="mb-3">
+                        {{ form.categorie.label_tag }}
+                        {{ form.categorie|add_class:"form-select mt-1"|add_error_class:"error-form-control" }}
+                        {% if form.errors.categorie %}
+                            {% for error in form.errors.categorie %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.quantite.label_tag }}
+                        <div class="input-group">
+                            {{ form.quantite|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                            {{ form.unite_quantite|add_class:"form-select mt-1"|add_error_class:"error-form-control" }}
+                        </div>
+                        {% if form.errors.quantite %}
+                            {% for error in form.errors.quantite %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% if form.errors.unite_quantite %}
+                            {% for error in form.errors.unite_quantite %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.tps_preparation_h.label_tag }}
+                        <div class="input-group">
+                            {{ form.tps_preparation_h|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                            <span class="input-group-text mt-1">h</span>
+                            {{ form.tps_preparation_m|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                        </div>
+                        {% if form.errors.tps_preparation_h %}
+                            {% for error in form.errors.tps_preparation_h %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% if form.errors.tps_preparation_m %}
+                            {% for error in form.errors.tps_preparation_m %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.tps_cuisson_h.label_tag }}
+                        <div class="input-group">
+                            {{ form.tps_cuisson_h|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                            <span class="input-group-text mt-1">h</span>
+                            {{ form.tps_cuisson_m|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                        </div>
+                        {% if form.errors.tps_cuisson_h %}
+                            {% for error in form.errors.tps_cuisson_h %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% if form.errors.tps_cuisson_m %}
+                            {% for error in form.errors.tps_cuisson_m %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.tps_repos_h.label_tag }}
+                        <div class="input-group">
+                            {{ form.tps_repos_h|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                            <span class="input-group-text mt-1">h</span>
+                            {{ form.tps_repos_m|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                        </div>
+                        {% if form.errors.tps_repos_h %}
+                            {% for error in form.errors.tps_repos_h %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% if form.errors.tps_repos_m %}
+                            {% for error in form.errors.tps_repos_m %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.difficulte.label_tag }}
+                        {{ form.difficulte|add_class:"form-select mt-1"|add_error_class:"error-form-control" }}
+                        {% if form.errors.difficulte %}
+                            {% for error in form.errors.difficulte %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.cout.label_tag }}
+                        {{ form.cout|add_class:"form-select mt-1"|add_error_class:"error-form-control" }}
+                        {% if form.errors.cout %}
+                            {% for error in form.errors.cout %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.photo.label_tag }}
+                        <div class="input-group">
+                            {{ form.photo|add_class:"form-control mt-1"|add_error_class:"error-form-control"|attr:"onchange:preview()" }}
+                            <button type="reset" class="btn btn-danger mt-1" onclick="clearImage()">X</button>
+                        </div>
+                        {% if form.errors.photo %}
+                            {% for error in form.errors.photo %}
+                                <p class="error-form mt-1">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        <img id="img_preview" src="" class="rounded mx-auto mt-2 d-block w-50" />
+                    </div>
+                </div>
+                <div class="col-8">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form.commentaire.label_tag }}
+                    {{ form.commentaire|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
+                    {% if form.errors.commentaire %}
+                        {% for error in form.errors.commentaire %}
                             <p class="error-form mt-1">{{ error }}</p>
                         {% endfor %}
                     {% endif %}
                 </div>
-                <div class="mb-3">
-                    {{ form.titre.label_tag }}
-                    {{ form.titre|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
-                    {% if form.errors.titre %}
-                        {% for error in form.errors.titre %}
-                            <p class="error-form mt-1">{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
+            </div>
+            <div class="row mt-3">
+                <div class="col d-flex justify-content-center">
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                        <a class="btn btn-danger" href="{% url 'recettes:index' %}" role="button">Annuler</a>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    {{ form.photo.label_tag }}
-                    {{ form.photo|add_class:"form-control mt-1"|add_error_class:"error-form-control" }}
-                    {% if form.errors.photo %}
-                        {% for error in form.errors.photo %}
-                            <p class="error-form mt-1">{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <button type="submit" class="btn btn-primary">Valider</button>
-                <a class="btn btn-danger" href="{% url 'recettes:index' %}" role="button">Annuler</a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+{% endblock %}
+{% block foot %}
+    {% load static %}
+    <script src="{% static 'recettes/js/form.js' %}"></script>
 {% endblock %}

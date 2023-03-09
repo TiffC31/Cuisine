@@ -35,7 +35,9 @@ class RecetteCreateView(View):
     def post(self, request):
         form = self.form_class(request.POST, request.FILES)
         if (form.is_valid()):
-            recette = form.save()
+            recette = form.save(commit=False)
+            recette.user_id = request.user.id
+            recette.save()
             return redirect('recettes:index')
         else:
             return render(request, self.template, context={'form':form})
